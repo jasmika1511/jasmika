@@ -42,7 +42,6 @@
 
   .wrap{ max-width: 1000px; margin: 0 auto; padding: 0 28px; }
 
-  /* ---------- NAV ---------- */
   .navbar{
     position: sticky; top:0; z-index:50;
     background: rgba(12,16,21,0.85);
@@ -75,7 +74,6 @@
     .nav-links{ display:none; }
   }
 
-  /* ---------- HERO ---------- */
   .hero{ padding: 60px 0 40px; border-bottom: 1px solid var(--border-soft); }
 
   .flap-name{
@@ -141,7 +139,6 @@
   .gate-cell.status .v{ color: var(--teal); }
   @media (max-width:680px){ .gate-row{ grid-template-columns: 1fr; } }
 
-  /* ---------- SECTION HEADERS ---------- */
   section{ padding: 56px 0; border-bottom:1px solid var(--border-soft); scroll-margin-top: 74px; }
   section:last-of-type{ border-bottom:none; }
   .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:30px; }
@@ -153,7 +150,6 @@
   }
   .sec-title::after{ content:""; flex:1; height:1px; background: var(--border); }
 
-  /* ---------- ABOUT ---------- */
   .about-grid{ display:grid; grid-template-columns: 1fr 220px; gap:40px; align-items:start; }
   .about-grid p{ font-size:15.5px; color: var(--text-dim); }
   .about-grid p + p{ margin-top:14px; }
@@ -164,7 +160,6 @@
   .stat .label{ font-size:11.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px; }
   @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } .about-stats{ flex-direction:row; flex-wrap:wrap; } }
 
-  /* ---------- PROJECTS ---------- */
   .project-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
   @media (max-width:760px){ .project-grid{ grid-template-columns:1fr; } }
   .project-card{
@@ -190,7 +185,6 @@
     border:1px solid var(--border-soft); padding:3px 8px; border-radius:4px;
   }
 
-  /* ---------- SKILLS ---------- */
   .skill-panel{ display:grid; gap:14px; }
   .skill-row{ display:grid; grid-template-columns: 160px 1fr; gap:18px; align-items:start; padding: 14px 0; border-bottom:1px dashed var(--border-soft); }
   .skill-row:last-child{ border-bottom:none; }
@@ -204,7 +198,6 @@
   .chip:hover{ border-color: var(--teal); color: var(--text); }
   @media (max-width:680px){ .skill-row{ grid-template-columns:1fr; gap:8px; } }
 
-  /* ---------- EXPERIENCE ---------- */
   .schedule{ display:flex; flex-direction:column; gap:10px; }
   .flight{ border:1px solid var(--border); background: var(--panel); border-radius:6px; overflow:hidden; }
   .flight summary{
@@ -229,7 +222,6 @@
     .flight-body{ padding-left:20px; }
   }
 
-  /* ---------- EDU / CERTS ---------- */
   .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
   @media (max-width:680px){ .grid-2{ grid-template-columns:1fr; } }
   .card{ border:1px solid var(--border); background: var(--panel); border-radius:6px; padding:20px; }
@@ -237,7 +229,6 @@
   .card h3{ font-size:15px; font-weight:600; margin-bottom:4px; }
   .card p{ font-size:13px; color: var(--text-dim); }
 
-  /* ---------- CONTACT ---------- */
   .contact-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px; }
   @media (max-width:760px){ .contact-grid{ grid-template-columns:1fr; } }
   .contact-card{
@@ -276,7 +267,7 @@
   <div class="wrap">
     <h1 class="flap-name" id="flapName" aria-label="Jasmika V"></h1>
     <p class="role-line">
-      <strong>Full Stack Developer</strong> · 5+ years building cloud-native backends, event-driven systems &amp; Generative AI pipelines on AWS — currently shipping recovery intelligence for <strong>Delta Air Lines</strong>.
+      <strong>Full Stack Developer</strong> with 5+ years of experience building cloud-native applications, backend systems, and Generative AI solutions on AWS for aviation, government, and healthcare clients.
     </p>
     <div class="hero-cta-row">
       <a class="cta primary" href="#projects">View Projects</a>
@@ -306,12 +297,11 @@
     <div class="sec-head"><span class="sec-num mono">01</span><span class="sec-title">About</span></div>
     <div class="about-grid">
       <div>
-        <p>I'm a full stack developer who ended up in aviation almost by accident and stayed because the problems are real: a flight cancels, and thousands of people's day changes in the next 36 hours. At <strong>Delta Air Lines</strong>, I build the backend systems and AI pipelines that help operations teams make sense of that chaos fast — from event-driven recovery workflows to a Retrieval-Augmented Generation pipeline that turns model predictions into explanations a human analyst can actually act on.</p>
-        <p>Before Delta, I spent time modernizing legacy government infrastructure at Georgia State University — migrating a decades-old SOAP ESB to a cloud-native architecture with zero downtime — and building healthcare analytics APIs. My Master's research on NLP led to an <strong>IEEE publication</strong>, and that same instinct for turning messy data into something usable is what drew me toward Generative AI and RAG systems in production.</p>
-        <p>I like backend systems that talk to people, not just to each other — dashboards analysts trust, explanations that hold up, pipelines that don't quietly break.</p>
+        <p>I'm a Full Stack Developer with 5+ years of experience building cloud-native applications, Python backend services, REST APIs, and AI-enabled solutions on AWS. At <strong>Delta Air Lines</strong>, I build backend systems and Generative AI pipelines that support operational recovery — including a Retrieval-Augmented Generation pipeline that turns model predictions into explanations analysts can act on quickly.</p>
+        <p>Earlier, at Georgia State University, I migrated a legacy SOAP ESB to a cloud-native AWS architecture with zero downtime, and built healthcare analytics APIs. My Master's research on NLP led to an <strong>IEEE publication</strong>, and that same focus on turning complex systems into usable tools carries into my work with Generative AI and RAG in production today.</p>
       </div>
       <div class="about-stats">
-        <div class="stat"><div class="num">5+</div><div class="label">Years shipping software</div></div>
+        <div class="stat"><div class="num">5+</div><div class="label">Years of experience</div></div>
         <div class="stat"><div class="num">1,000+</div><div class="label">Daily events processed at Delta</div></div>
         <div class="stat"><div class="num">1</div><div class="label">IEEE publication</div></div>
       </div>
@@ -327,7 +317,7 @@
       <div class="project-card">
         <div class="p-tag">Generative AI · Delta Air Lines</div>
         <h3>Recovery Explainability Engine</h3>
-        <p>A Retrieval-Augmented Generation pipeline that turns raw ML recovery recommendations into business-friendly explanations analysts can trust and act on quickly during live operational disruptions.</p>
+        <p>RAG pipeline for the CORE and DGT platforms that turns ML recovery recommendations into business-friendly explanations for analysts.</p>
         <div class="project-metric">−40% analyst investigation time</div>
         <div class="project-stack"><span>AWS Bedrock</span><span>LangChain</span><span>FastAPI</span><span>RAG</span></div>
       </div>
@@ -335,7 +325,7 @@
       <div class="project-card">
         <div class="p-tag">MLOps · Delta Air Lines</div>
         <h3>Drift-Aware Model Release Pipeline</h3>
-        <p>A GitLab CI framework with automated drift detection and regression gates that promotes SageMaker models across dev, staging, and production without manual gatekeeping.</p>
+        <p>GitLab CI framework with automated drift detection that promotes CORE and DGT models across dev, staging, and production.</p>
         <div class="project-metric">−50% model release time</div>
         <div class="project-stack"><span>GitLab CI</span><span>SageMaker</span><span>MLOps</span></div>
       </div>
@@ -343,7 +333,7 @@
       <div class="project-card">
         <div class="p-tag">Backend · Delta Air Lines</div>
         <h3>CORE Solver GraphQL Interface</h3>
-        <p>A GraphQL layer on Python FastAPI + AWS Lambda that serves model-ready datasets directly to Delta's recovery solver, replacing slower REST round-trips.</p>
+        <p>GraphQL layer on FastAPI and AWS Lambda serving model-ready datasets directly to Delta's recovery solver.</p>
         <div class="project-metric">−20% solver data-fetch time</div>
         <div class="project-stack"><span>GraphQL</span><span>FastAPI</span><span>AWS Lambda</span></div>
       </div>
@@ -351,15 +341,15 @@
       <div class="project-card">
         <div class="p-tag">Cloud Migration · Georgia State University</div>
         <h3>Zero-Downtime ESB → Cloud Migration</h3>
-        <p>Migrated a legacy SOAP ESB serving 15+ state agencies to a reusable AWS microservices framework, hardened with WAF, mTLS, and OAuth2 M2M via Cognito.</p>
+        <p>Migrated a legacy SOAP ESB serving 15+ state agencies to a secured AWS microservices framework.</p>
         <div class="project-metric">Onboarding: 3 weeks → 2 days</div>
         <div class="project-stack"><span>AWS</span><span>Terraform</span><span>Cognito</span><span>WAF</span></div>
       </div>
 
       <div class="project-card">
         <div class="p-tag">NLP Research · Georgia State University</div>
-        <h3>WebDocAnalyzer</h3>
-        <p>An NLP pipeline combining TF-IDF, Named Entity Recognition, and Graph-based HITS algorithms for automated news classification. Published at IEEE ICIEM 2022.</p>
+        <h3>CJEP WebDocAnalyzer</h3>
+        <p>NLP pipeline for CJEP combining TF-IDF, NER, and Graph-based HITS for automated news classification. Published at IEEE ICIEM 2022.</p>
         <div class="project-metric">77.9% precision</div>
         <div class="project-stack"><span>Python</span><span>NLP</span><span>Graph Algorithms</span></div>
       </div>
@@ -367,7 +357,7 @@
       <div class="project-card">
         <div class="p-tag">Computer Vision · WOIR Software</div>
         <h3>Clothes Color Recommender</h3>
-        <p>A computer vision system using OpenCV and K-means clustering to generate ML-driven complementary color suggestions for garments.</p>
+        <p>Computer vision system using OpenCV and K-means clustering to suggest complementary clothing colors.</p>
         <div class="project-metric">80%+ user-rated relevance</div>
         <div class="project-stack"><span>OpenCV</span><span>Python</span><span>K-means</span></div>
       </div>
@@ -494,7 +484,7 @@
           <ul>
             <li>Deployed FastAPI middleware APIs serving medical device analytics to 5+ downstream healthcare systems, with authentication, input validation, and structured error handling.</li>
             <li>Migrated REST endpoints to GraphQL using Graphene and Ariadne, enabling client-driven queries and narrowing average payload size by 40%.</li>
-            <li>Delivered WebDocAnalyzer, an NLP pipeline using TF-IDF, NER, and Graph-based HITS algorithms, achieving 77.9% precision on a news corpus.</li>
+            <li>Delivered CJEP WebDocAnalyzer, an NLP pipeline using TF-IDF, NER, and Graph-based HITS algorithms, achieving 77.9% precision on a news corpus.</li>
             <li>Crafted a responsive React UI with functional components and Context API, letting clinicians filter and export device telemetry across 20+ views, and authored pytest suites that lifted code coverage to 85%.</li>
           </ul>
         </div>
@@ -534,7 +524,7 @@
         <div class="flight-body">
           <div class="location mono">India</div>
           <ul>
-            <li>Co-developed a Computer Vision color recommendation system using OpenCV-Python and K-means clustering, generating ML-driven complementary color suggestions with 80%+ user-rated relevance for garments.</li>
+            <li>Co-developed a Computer Vision color recommendation system using OpenCV-Python and K-means clustering, generating ML-driven complementary color suggestions with 80%+ user-rated relevance for clothes.</li>
           </ul>
         </div>
       </details>
