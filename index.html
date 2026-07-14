@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasmika V — Full Stack &amp; AI Systems Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0C1015;
+    --panel: #12171F;
+    --panel-2: #171E28;
+    --border: #262F3B;
+    --border-soft: #1D2530;
+    --text: #E7EAEE;
+    --text-dim: #93A0B0;
+    --text-faint: #59667A;
+    --amber: #FFB020;
+    --teal: #46D9C2;
+    --red-flag: #FF6B5E;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      radial-gradient(1200px 600px at 15% -10%, rgba(70,217,194,0.07), transparent 60%),
+      radial-gradient(900px 500px at 90% 0%, rgba(255,176,32,0.05), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  a{color:inherit;}
+
+  ::selection{ background: var(--amber); color:#0C1015; }
+
+  :focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
+
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- TOP STRIP ---------- */
+  .topstrip{
+    border-bottom:1px solid var(--border-soft);
+    background: rgba(23,30,40,0.5);
+  }
+  .topstrip .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:14px; padding-bottom:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    color: var(--text-faint);
+    text-transform:uppercase;
+  }
+  .topstrip .live{ color: var(--teal); display:flex; align-items:center; gap:7px;}
+  .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.35; }
+  }
+
+  /* ---------- HERO / BOARD ---------- */
+  .hero{
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .board-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.18em;
+    color: var(--text-faint);
+    text-transform:uppercase;
+    margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .board-label::before{
+    content:"";
+    width:22px; height:1px;
+    background: var(--border);
+  }
+
+  .flap-name{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:700;
+    font-size: clamp(38px, 7.5vw, 76px);
+    letter-spacing: 0.02em;
+    display:flex;
+    flex-wrap:wrap;
+    gap: 0.02em;
+    line-height:1.02;
+  }
+  .flap-char{
+    display:inline-block;
+    background: var(--panel);
+    border:1px solid var(--border);
+    border-radius:4px;
+    padding: 0.05em 0.12em;
+    color: var(--text);
+    min-width:0.95em;
+    text-align:center;
+  }
+  .flap-char.space{ background:transparent; border-color:transparent; width:0.4em; padding:0; }
+  .flap-char.accent{ color: var(--amber); }
+
+  .role-line{
+    margin-top:22px;
+    font-size: clamp(16px, 2.4vw, 20px);
+    color: var(--text-dim);
+    font-weight:500;
+    max-width:640px;
+  }
+  .role-line strong{ color:var(--text); font-weight:600; }
+
+  .gate-row{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1px;
+    margin-top:36px;
+    border:1px solid var(--border);
+    background: var(--border);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .gate-cell{
+    background: var(--panel);
+    padding: 14px 16px;
+  }
+  .gate-cell .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.14em;
+    color: var(--text-faint);
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .gate-cell .v{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    color: var(--text);
+    word-break:break-word;
+  }
+  .gate-cell .v a{ text-decoration:none; border-bottom:1px dotted var(--text-faint); }
+  .gate-cell .v a:hover{ color: var(--teal); border-color: var(--teal); }
+  .gate-cell.status .v{ color: var(--teal); }
+
+  @media (max-width:680px){
+    .gate-row{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{ padding: 56px 0; border-bottom:1px solid var(--border-soft); }
+  section:last-of-type{ border-bottom:none; }
+
+  .sec-head{
+    display:flex; align-items:baseline; gap:16px;
+    margin-bottom:30px;
+  }
+  .sec-num{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--text-faint);
+    font-size:13px;
+  }
+  .sec-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color: var(--text-dim);
+    flex:1;
+    display:flex; align-items:center; gap:14px;
+  }
+  .sec-title::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--border);
+  }
+
+  /* ---------- SUMMARY ---------- */
+  .summary p{
+    font-size:16.5px;
+    color: var(--text-dim);
+    max-width: 760px;
+  }
+  .summary strong{ color:var(--text); font-weight:600; }
+
+  /* ---------- SKILLS ---------- */
+  .skill-panel{
+    display:grid;
+    gap:14px;
+  }
+  .skill-row{
+    display:grid;
+    grid-template-columns: 160px 1fr;
+    gap:18px;
+    align-items:start;
+    padding: 14px 0;
+    border-bottom:1px dashed var(--border-soft);
+  }
+  .skill-row:last-child{ border-bottom:none; }
+  .skill-cat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--amber);
+    padding-top:5px;
+  }
+  .chip-list{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color: var(--text-dim);
+    background: var(--panel);
+    border:1px solid var(--border);
+    padding:5px 10px;
+    border-radius:4px;
+    transition: border-color .15s, color .15s;
+  }
+  .chip:hover{ border-color: var(--teal); color: var(--text); }
+
+  @media (max-width:680px){
+    .skill-row{ grid-template-columns:1fr; gap:8px; }
+  }
+
+  /* ---------- EXPERIENCE / SCHEDULE ---------- */
+  .schedule{ display:flex; flex-direction:column; gap:10px; }
+
+  .flight{
+    border:1px solid var(--border);
+    background: var(--panel);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .flight[open]{ border-color: var(--border); }
+
+  .flight summary{
+    list-style:none;
+    cursor:pointer;
+    padding: 16px 18px;
+    display:grid;
+    grid-template-columns: 26px 1.4fr 1fr 22px;
+    gap:16px;
+    align-items:center;
+  }
+  .flight summary::-webkit-details-marker{ display:none; }
+
+  .flight-idx{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--text-faint);
+    font-size:12px;
+  }
+  .flight-main .company{
+    font-weight:700;
+    font-size:15.5px;
+    color: var(--text);
+  }
+  .flight-main .role{
+    font-size:13px;
+    color: var(--text-dim);
+    margin-top:2px;
+  }
+  .flight-dates{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color: var(--text-faint);
+    text-align:left;
+  }
+  .flight-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color: var(--teal);
+    background: rgba(70,217,194,0.08);
+    border:1px solid rgba(70,217,194,0.35);
+    padding:5px 9px;
+    border-radius:4px;
+    white-space:nowrap;
+  }
+  .chev{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--text-faint);
+    transition: transform .2s;
+    justify-self:end;
+  }
+  .flight[open] .chev{ transform: rotate(90deg); }
+
+  .flight-body{
+    padding: 0 18px 20px 62px;
+    border-top:1px dashed var(--border-soft);
+    margin-top:2px;
+    padding-top:16px;
+  }
+  .flight-body ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .flight-body li{
+    font-size:14px;
+    color: var(--text-dim);
+    padding-left:18px;
+    position:relative;
+  }
+  .flight-body li::before{
+    content:"›";
+    position:absolute; left:0; top:0;
+    color: var(--amber);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .flight-body .location{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color: var(--text-faint);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:12px;
+  }
+
+  @media (max-width:680px){
+    .flight summary{
+      grid-template-columns: 20px 1fr 20px;
+      grid-template-areas: "idx main chev" "idx dates chev";
+      row-gap:6px;
+    }
+    .flight-dates{ justify-self:start; }
+    .flight-body{ padding-left:20px; }
+  }
+
+  /* ---------- EDU / CERTS GRID ---------- */
+  .grid-2{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:16px;
+  }
+  @media (max-width:680px){ .grid-2{ grid-template-columns:1fr; } }
+
+  .card{
+    border:1px solid var(--border);
+    background: var(--panel);
+    border-radius:6px;
+    padding:20px;
+  }
+  .card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color: var(--amber);
+    margin-bottom:10px;
+  }
+  .card h3{
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .card p{
+    font-size:13px;
+    color: var(--text-dim);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 48px 0 60px;
+    text-align:center;
+  }
+  footer .callout{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--text-faint);
+    margin-bottom:18px;
+  }
+  .cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:6px;
+    border:1px solid var(--border);
+    color: var(--text);
+    transition: all .15s;
+  }
+  .cta.primary{
+    background: var(--teal);
+    color: #0C1015;
+    border-color: var(--teal);
+    font-weight:600;
+  }
+  .cta.primary:hover{ opacity:0.88; }
+  .cta:not(.primary):hover{ border-color: var(--text-faint); }
+
+  @media (prefers-reduced-motion: reduce){
+    .dot{ animation:none; }
+    *{ scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span>ATL · SOFTWARE ENGINEERING</span>
+    <span class="live"><span class="dot"></span> OPEN TO OPPORTUNITIES</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="flap-name" id="flapName" aria-label="Jasmika V"></h1>
+    <p class="role-line">
+      <strong>Full Stack Developer</strong> · 5+ years building cloud-native backends, event-driven systems &amp; Generative AI pipelines on AWS — currently shipping recovery intelligence for <strong>Delta Air Lines</strong>.
+    </p>
+
+    <div class="gate-row">
+      <div class="gate-cell">
+        <div class="k">Location</div>
+        <div class="v">Atlanta, GA</div>
+      </div>
+      <div class="gate-cell">
+        <div class="k">Email</div>
+        <div class="v"><a href="mailto:jasmika1511@gmail.com">jasmika1511@gmail.com</a></div>
+      </div>
+      <div class="gate-cell status">
+        <div class="k">Status</div>
+        <div class="v">ON TIME</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">01</span>
+      <span class="sec-title">Summary</span>
+    </div>
+    <p>
+      Full Stack Developer with <strong>5+ years</strong> of experience building cloud-native applications, Python backend services, REST APIs, and AI-enabled solutions on AWS. Experienced in <strong>FastAPI, Java, event-driven architectures, Generative AI, Amazon Bedrock, LangChain, and GraphQL</strong>. Proven track record of developing scalable backend systems, integrating ML inference into production applications, and delivering enterprise solutions for aviation, government, and healthcare domains. IEEE-published NLP researcher with a Master's in Computer Science from Georgia State University.
+    </p>
+  </div>
+</section>
+
+<section class="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">02</span>
+      <span class="sec-title">Systems &amp; tools</span>
+    </div>
+    <div class="skill-panel">
+      <div class="skill-row">
+        <div class="skill-cat">Languages</div>
+        <div class="chip-list">
+          <span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">SQL</span><span class="chip">Bash</span><span class="chip">C#</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">AI / ML</div>
+        <div class="chip-list">
+          <span class="chip">Amazon SageMaker</span><span class="chip">AWS Bedrock</span><span class="chip">LangChain</span><span class="chip">XGBoost</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">scikit-learn</span><span class="chip">Hugging Face Transformers</span><span class="chip">NLP</span><span class="chip">Computer Vision</span><span class="chip">RAG</span><span class="chip">Generative AI</span><span class="chip">Pinecone</span><span class="chip">FAISS</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Cloud &amp; DevOps</div>
+        <div class="chip-list">
+          <span class="chip">AWS Lambda</span><span class="chip">Step Functions</span><span class="chip">EventBridge</span><span class="chip">API Gateway</span><span class="chip">ECS Fargate</span><span class="chip">DynamoDB</span><span class="chip">S3</span><span class="chip">CloudWatch</span><span class="chip">SNS</span><span class="chip">Cognito</span><span class="chip">WAF</span><span class="chip">GitLab CI</span><span class="chip">Terraform</span><span class="chip">Docker</span><span class="chip">Kubernetes</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Frameworks &amp; APIs</div>
+        <div class="chip-list">
+          <span class="chip">FastAPI</span><span class="chip">Django REST Framework</span><span class="chip">GraphQL</span><span class="chip">REST APIs</span><span class="chip">React</span><span class="chip">Angular</span><span class="chip">PySpark</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Databases</div>
+        <div class="chip-list">
+          <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">DynamoDB</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Practices</div>
+        <div class="chip-list">
+          <span class="chip">Git</span><span class="chip">JIRA</span><span class="chip">Postman</span><span class="chip">Swagger</span><span class="chip">Amazon Q</span><span class="chip">Kiro</span><span class="chip">pytest</span><span class="chip">Agile/Scrum</span><span class="chip">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">03</span>
+      <span class="sec-title">Flight history — experience</span>
+    </div>
+
+    <div class="schedule" id="schedule">
+
+      <details class="flight" open>
+        <summary>
+          <span class="flight-idx mono">01</span>
+          <span class="flight-main">
+            <div class="company">Delta Air Lines <span style="color:var(--text-faint); font-weight:400;">(via Franklin Infotech)</span></div>
+            <div class="role">Full Stack Developer</div>
+          </span>
+          <span class="flight-dates mono">Aug 2024 — Present</span>
+          <span class="chev">▸</span>
+        </summary>
+        <div class="flight-body">
+          <div class="location mono">Atlanta, GA</div>
+          <ul>
+            <li>Architected cloud-native backend services and REST APIs for the CORE and DGT platforms using Python, FastAPI, AWS Lambda, EventBridge, DynamoDB, and SageMaker, integrating ML inference into event-driven operational recovery workflows.</li>
+            <li>Built a Retrieval-Augmented Generation (RAG) pipeline using AWS Bedrock and LangChain to generate business-friendly explanations for recovery recommendations, shortening analyst investigation time by 40%.</li>
+            <li>Engineered event-driven workflows to process real-time flight-change events within a 36-hour operational recovery window, enabling timely prediction requests and downstream updates.</li>
+            <li>Integrated SageMaker inference endpoints with AWS Lambda, DynamoDB, and S3 to process over 1,000 daily flight-change events and persist prediction results for downstream applications.</li>
+            <li>Established a GitLab CI MLOps framework with automated drift detection and regression gates, cutting model release time by 50% while promoting models across dev, staging, and prod.</li>
+            <li>Orchestrated CORE ETL workflows with AWS EventBridge, Step Functions, and PySpark transformations, loading aircraft schedules and crew assignments into DynamoDB and reducing processing errors by 25%.</li>
+            <li>Developed a GraphQL interface using Python FastAPI on AWS Lambda to serve model-ready datasets to the CORE backend solver, cutting solver data-fetch time by 20%.</li>
+            <li>Led Angular UI development for CORE recovery dashboards (Fleet, Crew Cancel, Station Capacity) using RxJS and NgRx, decreasing manual scheduling effort by 40%.</li>
+            <li>Implemented CloudWatch monitoring and SNS alerts to improve application observability, accelerating incident detection by 45%.</li>
+            <li>Collaborated with operations and data science teams to deliver AI-enabled recovery features while leveraging Amazon Q and Kiro to improve development productivity.</li>
+            <li>Containerized backend services using Docker to standardize deployments across development, testing, and production environments.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="flight">
+        <summary>
+          <span class="flight-idx mono">02</span>
+          <span class="flight-main">
+            <div class="company">Georgia State University</div>
+            <div class="role">AWS Cloud-Native Developer (GTA)</div>
+          </span>
+          <span class="flight-dates mono">Aug 2023 — Jun 2024</span>
+          <span class="chev">▸</span>
+        </summary>
+        <div class="flight-body">
+          <div class="location mono">Atlanta, GA</div>
+          <ul>
+            <li>Mapped legacy webMethods ESB functionality to a cloud-native migration strategy, scoping cutover criteria across 12+ partner agency integrations that became the blueprint for a phased, zero-downtime rollout.</li>
+            <li>Executed migration of the SOAP ESB to an AWS cloud-native architecture, completing cutover for all state agency consumers with zero downtime.</li>
+            <li>Replaced legacy SOAP interfaces with a reusable microservices framework of Python RESTful services, cutting new agency integration onboarding from 3 weeks to 2 days.</li>
+            <li>Hardened the API surface with AWS WAF, Mutual TLS, and a custom RBAC model using OAuth2 M2M authorization via AWS Cognito, enforcing least-privilege access across 15+ client agencies.</li>
+            <li>Created a React portal with a hooks-based component library, giving agency teams self-service visibility into onboarding status and service health.</li>
+            <li>Optimized compute spend by shifting non-critical workloads to AWS ECS Spot Fargate, lowering infrastructure costs by 35%.</li>
+            <li>Provisioned Infrastructure as Code with Terraform and AWS CodePipeline, standardizing repeatable deployments and eliminating configuration drift across all environments.</li>
+            <li>Configured API Gateway endpoints with usage plans, throttling, and request validation, standardizing secure external access across all partner agency integrations.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="flight">
+        <summary>
+          <span class="flight-idx mono">03</span>
+          <span class="flight-main">
+            <div class="company">Georgia State University</div>
+            <div class="role">Software Developer</div>
+          </span>
+          <span class="flight-dates mono">Aug 2022 — May 2023</span>
+          <span class="chev">▸</span>
+        </summary>
+        <div class="flight-body">
+          <div class="location mono">Atlanta, GA</div>
+          <ul>
+            <li>Deployed FastAPI middleware APIs serving medical device analytics to 5+ downstream healthcare systems, with authentication, input validation, and structured error handling.</li>
+            <li>Migrated REST endpoints to GraphQL using Graphene and Ariadne, enabling client-driven queries and narrowing average payload size by 40%.</li>
+            <li>Delivered WebDocAnalyzer, an NLP pipeline using TF-IDF, NER, and Graph-based HITS algorithms, achieving 77.9% precision on a news corpus.</li>
+            <li>Crafted a responsive React UI with functional components and Context API, letting clinicians filter and export device telemetry across 20+ views, and authored pytest suites that lifted code coverage to 85%.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="flight">
+        <summary>
+          <span class="flight-idx mono">04</span>
+          <span class="flight-main">
+            <div class="company">Yinbotech Systems</div>
+            <div class="role">Software Associate</div>
+          </span>
+          <span class="flight-dates mono">Jan 2022 — Jul 2022</span>
+          <span class="chev">▸</span>
+        </summary>
+        <div class="flight-body">
+          <div class="location mono">India</div>
+          <ul>
+            <li>Analyzed business and technical requirements to design scalable Python backend services, then built ETL pipelines processing 100K+ client records daily into MySQL with Regex-based validation to catch malformed data before downstream systems.</li>
+            <li>Extended RESTful APIs with Django REST Framework, adding custom role-based authorization middleware across 10+ endpoints, and designed optimized relational database schemas with SQL queries and stored procedures to maintain data integrity and performance.</li>
+            <li>Enforced authentication, authorization, and data validation logic, then validated auth flows and API contracts using Python unittest and DRF's test client, fixing 15+ bugs before QA handoff.</li>
+            <li>Conducted peer code reviews and standardized reusable Python utility modules for logging, error handling, and validation, which were reused across 3+ teams to maintain consistent code quality.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="flight">
+        <summary>
+          <span class="flight-idx mono">05</span>
+          <span class="flight-main">
+            <div class="company">WOIR Software India Pvt. Ltd.</div>
+            <div class="role">Software Developer Intern</div>
+          </span>
+          <span class="flight-dates mono">Apr 2021 — Aug 2021</span>
+          <span class="chev">▸</span>
+        </summary>
+        <div class="flight-body">
+          <div class="location mono">India</div>
+          <ul>
+            <li>Co-developed a Computer Vision color recommendation system using OpenCV-Python and K-means clustering, generating ML-driven complementary color suggestions with 80%+ user-rated relevance for garments.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="flight">
+        <summary>
+          <span class="flight-idx mono">06</span>
+          <span class="flight-main">
+            <div class="company">Indian Servers India</div>
+            <div class="role">Web Developer &amp; 3D Designer Intern</div>
+          </span>
+          <span class="flight-dates mono">Apr 2020 — Aug 2020</span>
+          <span class="chev">▸</span>
+        </summary>
+        <div class="flight-body">
+          <div class="location mono">India</div>
+          <ul>
+            <li>Modeled 15+ 3D game assets in Unity with C# and integrated Unity WebGL builds for web platforms, enabling browser-based deployment across 4+ major browsers.</li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section class="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">04</span>
+      <span class="sec-title">Education &amp; credentials</span>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="tag">Education</div>
+        <h3>M.S. Computer Science</h3>
+        <p>Georgia State University · Atlanta, GA</p>
+      </div>
+      <div class="card">
+        <div class="tag">Education</div>
+        <h3>B.Tech, Computer Science &amp; Engineering</h3>
+        <p>PVP Siddhartha Institute of Technology · India</p>
+      </div>
+      <div class="card">
+        <div class="tag">Certification</div>
+        <h3>AWS Certified Cloud Practitioner</h3>
+        <p>Amazon Web Services</p>
+      </div>
+      <div class="card">
+        <div class="tag">Publication</div>
+        <h3>IEEE — "News Classification Using NLP"</h3>
+        <p>ICIEM 2022</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="callout">Final boarding call</div>
+    <div class="cta-row">
+      <a class="cta primary" href="mailto:jasmika1511@gmail.com">Email Jasmika</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Split-flap intro animation for the name, runs once on load.
+  (function(){
+    const target = "JASMIKA V";
+    const el = document.getElementById('flapName');
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const spans = [];
+    target.split("").forEach((ch) => {
+      const span = document.createElement('span');
+      span.className = 'flap-char' + (ch === ' ' ? ' space' : (ch === 'V' ? ' accent' : ''));
+      span.textContent = ch === ' ' ? '' : ch;
+      el.appendChild(span);
+      spans.push({ span, final: ch });
+    });
+
+    if (prefersReduced) return;
+
+    spans.forEach(({ span, final }, i) => {
+      if (final === ' ') return;
+      let ticks = 0;
+      const maxTicks = 8 + Math.floor(Math.random() * 6);
+      const delay = i * 55;
+      setTimeout(() => {
+        const iv = setInterval(() => {
+          ticks++;
+          if (ticks >= maxTicks) {
+            span.textContent = final;
+            clearInterval(iv);
+          } else {
+            span.textContent = chars[Math.floor(Math.random() * chars.length)];
+          }
+        }, 45);
+      }, delay);
+    });
+  })();
+</script>
+
+</body>
+</html>
