@@ -18,11 +18,9 @@
     --text-faint: #59667A;
     --amber: #FFB020;
     --teal: #46D9C2;
-    --red-flag: #FF6B5E;
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
-
   html{scroll-behavior:smooth;}
 
   body{
@@ -38,74 +36,54 @@
   }
 
   .mono{font-family:'IBM Plex Mono', monospace;}
-
   a{color:inherit;}
-
   ::selection{ background: var(--amber); color:#0C1015; }
-
   :focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
 
-  .wrap{
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
+  .wrap{ max-width: 1000px; margin: 0 auto; padding: 0 28px; }
 
-  /* ---------- TOP STRIP ---------- */
-  .topstrip{
+  /* ---------- NAV ---------- */
+  .navbar{
+    position: sticky; top:0; z-index:50;
+    background: rgba(12,16,21,0.85);
+    backdrop-filter: blur(10px);
     border-bottom:1px solid var(--border-soft);
-    background: rgba(23,30,40,0.5);
   }
-  .topstrip .wrap{
+  .navbar .wrap{
     display:flex; justify-content:space-between; align-items:center;
-    padding-top:14px; padding-bottom:14px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    letter-spacing:0.08em;
-    color: var(--text-faint);
-    text-transform:uppercase;
+    padding-top:16px; padding-bottom:16px;
   }
-  .topstrip .live{ color: var(--teal); display:flex; align-items:center; gap:7px;}
-  .dot{
+  .nav-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:700; font-size:14px; letter-spacing:0.04em;
+    display:flex; align-items:center; gap:9px;
+  }
+  .nav-id .dot{
     width:7px; height:7px; border-radius:50%;
-    background: var(--teal);
-    box-shadow: 0 0 8px var(--teal);
+    background: var(--teal); box-shadow: 0 0 8px var(--teal);
     animation: pulse 2.4s ease-in-out infinite;
   }
-  @keyframes pulse{
-    0%,100%{ opacity:1; }
-    50%{ opacity:0.35; }
-  }
-
-  /* ---------- HERO / BOARD ---------- */
-  .hero{
-    padding: 64px 0 40px;
-    border-bottom: 1px solid var(--border-soft);
-  }
-
-  .board-label{
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
+  .nav-links{
+    display:flex; gap:28px;
     font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    letter-spacing:0.18em;
-    color: var(--text-faint);
-    text-transform:uppercase;
-    margin-bottom:22px;
-    display:flex; align-items:center; gap:10px;
+    font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
   }
-  .board-label::before{
-    content:"";
-    width:22px; height:1px;
-    background: var(--border);
+  .nav-links a{ text-decoration:none; color:var(--text-dim); transition:color .15s; padding-bottom:3px; border-bottom:1px solid transparent; }
+  .nav-links a:hover{ color:var(--text); border-color:var(--teal); }
+  @media (max-width:680px){
+    .nav-links{ display:none; }
   }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding: 60px 0 40px; border-bottom: 1px solid var(--border-soft); }
 
   .flap-name{
     font-family:'IBM Plex Mono', monospace;
     font-weight:700;
     font-size: clamp(38px, 7.5vw, 76px);
     letter-spacing: 0.02em;
-    display:flex;
-    flex-wrap:wrap;
-    gap: 0.02em;
+    display:flex; flex-wrap:wrap; gap: 0.02em;
     line-height:1.02;
   }
   .flap-char{
@@ -126,285 +104,152 @@
     font-size: clamp(16px, 2.4vw, 20px);
     color: var(--text-dim);
     font-weight:500;
-    max-width:640px;
+    max-width:660px;
   }
   .role-line strong{ color:var(--text); font-weight:600; }
 
-  .gate-row{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:1px;
-    margin-top:36px;
-    border:1px solid var(--border);
-    background: var(--border);
-    border-radius:6px;
-    overflow:hidden;
-  }
-  .gate-cell{
-    background: var(--panel);
-    padding: 14px 16px;
-  }
-  .gate-cell .k{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10px;
-    letter-spacing:0.14em;
-    color: var(--text-faint);
-    text-transform:uppercase;
-    margin-bottom:6px;
-  }
-  .gate-cell .v{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13.5px;
-    color: var(--text);
-    word-break:break-word;
-  }
-  .gate-cell .v a{ text-decoration:none; border-bottom:1px dotted var(--text-faint); }
-  .gate-cell .v a:hover{ color: var(--teal); border-color: var(--teal); }
-  .gate-cell.status .v{ color: var(--teal); }
-
-  @media (max-width:680px){
-    .gate-row{ grid-template-columns: 1fr; }
-  }
-
-  /* ---------- SECTION HEADERS ---------- */
-  section{ padding: 56px 0; border-bottom:1px solid var(--border-soft); }
-  section:last-of-type{ border-bottom:none; }
-
-  .sec-head{
-    display:flex; align-items:baseline; gap:16px;
-    margin-bottom:30px;
-  }
-  .sec-num{
-    font-family:'IBM Plex Mono', monospace;
-    color: var(--text-faint);
-    font-size:13px;
-  }
-  .sec-title{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    letter-spacing:0.16em;
-    text-transform:uppercase;
-    color: var(--text-dim);
-    flex:1;
-    display:flex; align-items:center; gap:14px;
-  }
-  .sec-title::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background: var(--border);
-  }
-
-  /* ---------- SUMMARY ---------- */
-  .summary p{
-    font-size:16.5px;
-    color: var(--text-dim);
-    max-width: 760px;
-  }
-  .summary strong{ color:var(--text); font-weight:600; }
-
-  /* ---------- SKILLS ---------- */
-  .skill-panel{
-    display:grid;
-    gap:14px;
-  }
-  .skill-row{
-    display:grid;
-    grid-template-columns: 160px 1fr;
-    gap:18px;
-    align-items:start;
-    padding: 14px 0;
-    border-bottom:1px dashed var(--border-soft);
-  }
-  .skill-row:last-child{ border-bottom:none; }
-  .skill-cat{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color: var(--amber);
-    padding-top:5px;
-  }
-  .chip-list{ display:flex; flex-wrap:wrap; gap:8px; }
-  .chip{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color: var(--text-dim);
-    background: var(--panel);
-    border:1px solid var(--border);
-    padding:5px 10px;
-    border-radius:4px;
-    transition: border-color .15s, color .15s;
-  }
-  .chip:hover{ border-color: var(--teal); color: var(--text); }
-
-  @media (max-width:680px){
-    .skill-row{ grid-template-columns:1fr; gap:8px; }
-  }
-
-  /* ---------- EXPERIENCE / SCHEDULE ---------- */
-  .schedule{ display:flex; flex-direction:column; gap:10px; }
-
-  .flight{
-    border:1px solid var(--border);
-    background: var(--panel);
-    border-radius:6px;
-    overflow:hidden;
-  }
-  .flight[open]{ border-color: var(--border); }
-
-  .flight summary{
-    list-style:none;
-    cursor:pointer;
-    padding: 16px 18px;
-    display:grid;
-    grid-template-columns: 26px 1.4fr 1fr 22px;
-    gap:16px;
-    align-items:center;
-  }
-  .flight summary::-webkit-details-marker{ display:none; }
-
-  .flight-idx{
-    font-family:'IBM Plex Mono', monospace;
-    color: var(--text-faint);
-    font-size:12px;
-  }
-  .flight-main .company{
-    font-weight:700;
-    font-size:15.5px;
-    color: var(--text);
-  }
-  .flight-main .role{
-    font-size:13px;
-    color: var(--text-dim);
-    margin-top:2px;
-  }
-  .flight-dates{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color: var(--text-faint);
-    text-align:left;
-  }
-  .flight-badge{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    color: var(--teal);
-    background: rgba(70,217,194,0.08);
-    border:1px solid rgba(70,217,194,0.35);
-    padding:5px 9px;
-    border-radius:4px;
-    white-space:nowrap;
-  }
-  .chev{
-    font-family:'IBM Plex Mono', monospace;
-    color: var(--text-faint);
-    transition: transform .2s;
-    justify-self:end;
-  }
-  .flight[open] .chev{ transform: rotate(90deg); }
-
-  .flight-body{
-    padding: 0 18px 20px 62px;
-    border-top:1px dashed var(--border-soft);
-    margin-top:2px;
-    padding-top:16px;
-  }
-  .flight-body ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
-  .flight-body li{
-    font-size:14px;
-    color: var(--text-dim);
-    padding-left:18px;
-    position:relative;
-  }
-  .flight-body li::before{
-    content:"›";
-    position:absolute; left:0; top:0;
-    color: var(--amber);
-    font-family:'IBM Plex Mono', monospace;
-  }
-  .flight-body .location{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    color: var(--text-faint);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    margin-bottom:12px;
-  }
-
-  @media (max-width:680px){
-    .flight summary{
-      grid-template-columns: 20px 1fr 20px;
-      grid-template-areas: "idx main chev" "idx dates chev";
-      row-gap:6px;
-    }
-    .flight-dates{ justify-self:start; }
-    .flight-body{ padding-left:20px; }
-  }
-
-  /* ---------- EDU / CERTS GRID ---------- */
-  .grid-2{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:16px;
-  }
-  @media (max-width:680px){ .grid-2{ grid-template-columns:1fr; } }
-
-  .card{
-    border:1px solid var(--border);
-    background: var(--panel);
-    border-radius:6px;
-    padding:20px;
-  }
-  .card .tag{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10.5px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color: var(--amber);
-    margin-bottom:10px;
-  }
-  .card h3{
-    font-size:15px;
-    font-weight:600;
-    margin-bottom:4px;
-  }
-  .card p{
-    font-size:13px;
-    color: var(--text-dim);
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer{
-    padding: 48px 0 60px;
-    text-align:center;
-  }
-  footer .callout{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color: var(--text-faint);
-    margin-bottom:18px;
-  }
-  .cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .hero-cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
   .cta{
     font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
+    font-size:12.5px;
     text-decoration:none;
-    padding:12px 22px;
+    padding:11px 20px;
     border-radius:6px;
     border:1px solid var(--border);
     color: var(--text);
     transition: all .15s;
+    display:inline-flex; align-items:center; gap:8px;
   }
-  .cta.primary{
-    background: var(--teal);
-    color: #0C1015;
-    border-color: var(--teal);
-    font-weight:600;
-  }
+  .cta.primary{ background: var(--teal); color: #0C1015; border-color: var(--teal); font-weight:600; }
   .cta.primary:hover{ opacity:0.88; }
   .cta:not(.primary):hover{ border-color: var(--text-faint); }
+
+  .gate-row{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:1px;
+    margin-top:36px;
+    border:1px solid var(--border); background: var(--border);
+    border-radius:6px; overflow:hidden;
+  }
+  .gate-cell{ background: var(--panel); padding: 14px 16px; }
+  .gate-cell .k{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.14em;
+    color: var(--text-faint); text-transform:uppercase; margin-bottom:6px;
+  }
+  .gate-cell .v{ font-family:'IBM Plex Mono', monospace; font-size:13.5px; color: var(--text); word-break:break-word; }
+  .gate-cell .v a{ text-decoration:none; border-bottom:1px dotted var(--text-faint); }
+  .gate-cell .v a:hover{ color: var(--teal); border-color: var(--teal); }
+  .gate-cell.status .v{ color: var(--teal); }
+  @media (max-width:680px){ .gate-row{ grid-template-columns: 1fr; } }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{ padding: 56px 0; border-bottom:1px solid var(--border-soft); scroll-margin-top: 74px; }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:30px; }
+  .sec-num{ font-family:'IBM Plex Mono', monospace; color: var(--text-faint); font-size:13px; }
+  .sec-title{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.16em;
+    text-transform:uppercase; color: var(--text-dim);
+    flex:1; display:flex; align-items:center; gap:14px;
+  }
+  .sec-title::after{ content:""; flex:1; height:1px; background: var(--border); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns: 1fr 220px; gap:40px; align-items:start; }
+  .about-grid p{ font-size:15.5px; color: var(--text-dim); }
+  .about-grid p + p{ margin-top:14px; }
+  .about-grid strong{ color:var(--text); font-weight:600; }
+  .about-stats{ display:flex; flex-direction:column; gap:18px; }
+  .stat{ border-left:2px solid var(--teal); padding-left:14px; }
+  .stat .num{ font-family:'IBM Plex Mono', monospace; font-size:24px; font-weight:700; color:var(--text); }
+  .stat .label{ font-size:11.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px; }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } .about-stats{ flex-direction:row; flex-wrap:wrap; } }
+
+  /* ---------- PROJECTS ---------- */
+  .project-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  @media (max-width:760px){ .project-grid{ grid-template-columns:1fr; } }
+  .project-card{
+    border:1px solid var(--border); background: var(--panel);
+    border-radius:8px; padding:22px; display:flex; flex-direction:column; gap:12px;
+    transition: border-color .15s, transform .15s;
+  }
+  .project-card:hover{ border-color: var(--teal); transform: translateY(-2px); }
+  .project-card .p-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color: var(--amber);
+  }
+  .project-card h3{ font-size:16.5px; font-weight:700; }
+  .project-card p{ font-size:13.5px; color: var(--text-dim); flex:1; }
+  .project-metric{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color: var(--teal);
+    background: rgba(70,217,194,0.08); border:1px solid rgba(70,217,194,0.3);
+    padding:5px 9px; border-radius:4px; width:fit-content;
+  }
+  .project-stack{ display:flex; flex-wrap:wrap; gap:6px; margin-top:2px; }
+  .project-stack span{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--text-faint);
+    border:1px solid var(--border-soft); padding:3px 8px; border-radius:4px;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-panel{ display:grid; gap:14px; }
+  .skill-row{ display:grid; grid-template-columns: 160px 1fr; gap:18px; align-items:start; padding: 14px 0; border-bottom:1px dashed var(--border-soft); }
+  .skill-row:last-child{ border-bottom:none; }
+  .skill-cat{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color: var(--amber); padding-top:5px; }
+  .chip-list{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color: var(--text-dim);
+    background: var(--panel); border:1px solid var(--border); padding:5px 10px; border-radius:4px;
+    transition: border-color .15s, color .15s;
+  }
+  .chip:hover{ border-color: var(--teal); color: var(--text); }
+  @media (max-width:680px){ .skill-row{ grid-template-columns:1fr; gap:8px; } }
+
+  /* ---------- EXPERIENCE ---------- */
+  .schedule{ display:flex; flex-direction:column; gap:10px; }
+  .flight{ border:1px solid var(--border); background: var(--panel); border-radius:6px; overflow:hidden; }
+  .flight summary{
+    list-style:none; cursor:pointer; padding: 16px 18px;
+    display:grid; grid-template-columns: 26px 1.4fr 1fr 22px; gap:16px; align-items:center;
+  }
+  .flight summary::-webkit-details-marker{ display:none; }
+  .flight-idx{ font-family:'IBM Plex Mono', monospace; color: var(--text-faint); font-size:12px; }
+  .flight-main .company{ font-weight:700; font-size:15.5px; color: var(--text); }
+  .flight-main .role{ font-size:13px; color: var(--text-dim); margin-top:2px; }
+  .flight-dates{ font-family:'IBM Plex Mono', monospace; font-size:12px; color: var(--text-faint); text-align:left; }
+  .chev{ font-family:'IBM Plex Mono', monospace; color: var(--text-faint); transition: transform .2s; justify-self:end; }
+  .flight[open] .chev{ transform: rotate(90deg); }
+  .flight-body{ padding: 0 18px 20px 62px; border-top:1px dashed var(--border-soft); margin-top:2px; padding-top:16px; }
+  .flight-body ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .flight-body li{ font-size:14px; color: var(--text-dim); padding-left:18px; position:relative; }
+  .flight-body li::before{ content:"›"; position:absolute; left:0; top:0; color: var(--amber); font-family:'IBM Plex Mono', monospace; }
+  .flight-body .location{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px; }
+  @media (max-width:680px){
+    .flight summary{ grid-template-columns: 20px 1fr 20px; grid-template-areas: "idx main chev" "idx dates chev"; row-gap:6px; }
+    .flight-dates{ justify-self:start; }
+    .flight-body{ padding-left:20px; }
+  }
+
+  /* ---------- EDU / CERTS ---------- */
+  .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  @media (max-width:680px){ .grid-2{ grid-template-columns:1fr; } }
+  .card{ border:1px solid var(--border); background: var(--panel); border-radius:6px; padding:20px; }
+  .card .tag{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color: var(--amber); margin-bottom:10px; }
+  .card h3{ font-size:15px; font-weight:600; margin-bottom:4px; }
+  .card p{ font-size:13px; color: var(--text-dim); }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px; }
+  @media (max-width:760px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-card{
+    border:1px solid var(--border); background: var(--panel); border-radius:8px;
+    padding:22px; text-decoration:none; transition: border-color .15s, transform .15s;
+  }
+  .contact-card:hover{ border-color: var(--teal); transform: translateY(-2px); }
+  .contact-card .k{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color: var(--text-faint); margin-bottom:8px; }
+  .contact-card .v{ font-size:14.5px; font-weight:600; color:var(--text); word-break:break-word; }
+
+  footer{ padding: 36px 0 50px; text-align:center; }
+  footer p{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color: var(--text-faint); }
 
   @media (prefers-reduced-motion: reduce){
     .dot{ animation:none; }
@@ -414,19 +259,30 @@
 </head>
 <body>
 
-<div class="topstrip">
+<nav class="navbar">
   <div class="wrap">
-    <span>ATL · SOFTWARE ENGINEERING</span>
-    <span class="live"><span class="dot"></span> OPEN TO OPPORTUNITIES</span>
+    <div class="nav-id"><span class="dot"></span> JASMIKA V</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
-</div>
+</nav>
 
-<header class="hero">
+<header class="hero" id="home">
   <div class="wrap">
     <h1 class="flap-name" id="flapName" aria-label="Jasmika V"></h1>
     <p class="role-line">
       <strong>Full Stack Developer</strong> · 5+ years building cloud-native backends, event-driven systems &amp; Generative AI pipelines on AWS — currently shipping recovery intelligence for <strong>Delta Air Lines</strong>.
     </p>
+    <div class="hero-cta-row">
+      <a class="cta primary" href="#projects">View Projects</a>
+      <a class="cta" href="resume.pdf" target="_blank" rel="noopener">Download Resume ↓</a>
+      <a class="cta" href="https://www.linkedin.com/in/vemulaj/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
 
     <div class="gate-row">
       <div class="gate-cell">
@@ -445,24 +301,84 @@
   </div>
 </header>
 
-<section class="summary">
+<section id="about">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num mono">01</span>
-      <span class="sec-title">Summary</span>
+    <div class="sec-head"><span class="sec-num mono">01</span><span class="sec-title">About</span></div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a full stack developer who ended up in aviation almost by accident and stayed because the problems are real: a flight cancels, and thousands of people's day changes in the next 36 hours. At <strong>Delta Air Lines</strong>, I build the backend systems and AI pipelines that help operations teams make sense of that chaos fast — from event-driven recovery workflows to a Retrieval-Augmented Generation pipeline that turns model predictions into explanations a human analyst can actually act on.</p>
+        <p>Before Delta, I spent time modernizing legacy government infrastructure at Georgia State University — migrating a decades-old SOAP ESB to a cloud-native architecture with zero downtime — and building healthcare analytics APIs. My Master's research on NLP led to an <strong>IEEE publication</strong>, and that same instinct for turning messy data into something usable is what drew me toward Generative AI and RAG systems in production.</p>
+        <p>I like backend systems that talk to people, not just to each other — dashboards analysts trust, explanations that hold up, pipelines that don't quietly break.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><div class="num">5+</div><div class="label">Years shipping software</div></div>
+        <div class="stat"><div class="num">1,000+</div><div class="label">Daily events processed at Delta</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">IEEE publication</div></div>
+      </div>
     </div>
-    <p>
-      Full Stack Developer with <strong>5+ years</strong> of experience building cloud-native applications, Python backend services, REST APIs, and AI-enabled solutions on AWS. Experienced in <strong>FastAPI, Java, event-driven architectures, Generative AI, Amazon Bedrock, LangChain, and GraphQL</strong>. Proven track record of developing scalable backend systems, integrating ML inference into production applications, and delivering enterprise solutions for aviation, government, and healthcare domains. IEEE-published NLP researcher with a Master's in Computer Science from Georgia State University.
-    </p>
   </div>
 </section>
 
-<section class="skills">
+<section id="projects">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num mono">02</span>
-      <span class="sec-title">Systems &amp; tools</span>
+    <div class="sec-head"><span class="sec-num mono">02</span><span class="sec-title">Projects</span></div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="p-tag">Generative AI · Delta Air Lines</div>
+        <h3>Recovery Explainability Engine</h3>
+        <p>A Retrieval-Augmented Generation pipeline that turns raw ML recovery recommendations into business-friendly explanations analysts can trust and act on quickly during live operational disruptions.</p>
+        <div class="project-metric">−40% analyst investigation time</div>
+        <div class="project-stack"><span>AWS Bedrock</span><span>LangChain</span><span>FastAPI</span><span>RAG</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="p-tag">MLOps · Delta Air Lines</div>
+        <h3>Drift-Aware Model Release Pipeline</h3>
+        <p>A GitLab CI framework with automated drift detection and regression gates that promotes SageMaker models across dev, staging, and production without manual gatekeeping.</p>
+        <div class="project-metric">−50% model release time</div>
+        <div class="project-stack"><span>GitLab CI</span><span>SageMaker</span><span>MLOps</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="p-tag">Backend · Delta Air Lines</div>
+        <h3>CORE Solver GraphQL Interface</h3>
+        <p>A GraphQL layer on Python FastAPI + AWS Lambda that serves model-ready datasets directly to Delta's recovery solver, replacing slower REST round-trips.</p>
+        <div class="project-metric">−20% solver data-fetch time</div>
+        <div class="project-stack"><span>GraphQL</span><span>FastAPI</span><span>AWS Lambda</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="p-tag">Cloud Migration · Georgia State University</div>
+        <h3>Zero-Downtime ESB → Cloud Migration</h3>
+        <p>Migrated a legacy SOAP ESB serving 15+ state agencies to a reusable AWS microservices framework, hardened with WAF, mTLS, and OAuth2 M2M via Cognito.</p>
+        <div class="project-metric">Onboarding: 3 weeks → 2 days</div>
+        <div class="project-stack"><span>AWS</span><span>Terraform</span><span>Cognito</span><span>WAF</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="p-tag">NLP Research · Georgia State University</div>
+        <h3>WebDocAnalyzer</h3>
+        <p>An NLP pipeline combining TF-IDF, Named Entity Recognition, and Graph-based HITS algorithms for automated news classification. Published at IEEE ICIEM 2022.</p>
+        <div class="project-metric">77.9% precision</div>
+        <div class="project-stack"><span>Python</span><span>NLP</span><span>Graph Algorithms</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="p-tag">Computer Vision · WOIR Software</div>
+        <h3>Garment Color Recommender</h3>
+        <p>A computer vision system using OpenCV and K-means clustering to generate ML-driven complementary color suggestions for garments.</p>
+        <div class="project-metric">80%+ user-rated relevance</div>
+        <div class="project-stack"><span>OpenCV</span><span>Python</span><span>K-means</span></div>
+      </div>
+
     </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num mono">03</span><span class="sec-title">Systems &amp; tools</span></div>
     <div class="skill-panel">
       <div class="skill-row">
         <div class="skill-cat">Languages</div>
@@ -504,14 +420,11 @@
   </div>
 </section>
 
-<section class="experience">
+<section id="experience">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num mono">03</span>
-      <span class="sec-title">Flight history — experience</span>
-    </div>
+    <div class="sec-head"><span class="sec-num mono">04</span><span class="sec-title">Flight history — experience</span></div>
 
-    <div class="schedule" id="schedule">
+    <div class="schedule">
 
       <details class="flight" open>
         <summary>
@@ -648,12 +561,9 @@
   </div>
 </section>
 
-<section class="education">
+<section id="education">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num mono">04</span>
-      <span class="sec-title">Education &amp; credentials</span>
-    </div>
+    <div class="sec-head"><span class="sec-num mono">05</span><span class="sec-title">Education &amp; credentials</span></div>
     <div class="grid-2">
       <div class="card">
         <div class="tag">Education</div>
@@ -679,17 +589,31 @@
   </div>
 </section>
 
-<footer>
+<section id="contact">
   <div class="wrap">
-    <div class="callout">Final boarding call</div>
-    <div class="cta-row">
-      <a class="cta primary" href="mailto:jasmika1511@gmail.com">Email Jasmika</a>
+    <div class="sec-head"><span class="sec-num mono">06</span><span class="sec-title">Contact</span></div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:jasmika1511@gmail.com">
+        <div class="k">Email</div>
+        <div class="v">jasmika1511@gmail.com</div>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/vemulaj/" target="_blank" rel="noopener">
+        <div class="k">LinkedIn</div>
+        <div class="v">linkedin.com/in/vemulaj</div>
+      </a>
+      <a class="contact-card" href="resume.pdf" target="_blank" rel="noopener">
+        <div class="k">Resume</div>
+        <div class="v">Download PDF ↓</div>
+      </a>
     </div>
   </div>
+</section>
+
+<footer>
+  <p>Built by Jasmika V · Atlanta, GA</p>
 </footer>
 
 <script>
-  // Split-flap intro animation for the name, runs once on load.
   (function(){
     const target = "JASMIKA V";
     const el = document.getElementById('flapName');
